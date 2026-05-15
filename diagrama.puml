@@ -1,0 +1,123 @@
+@startuml
+
+enum EstadoCelda {
+    VACIA
+    OBJETO
+    ENEMIGO
+}
+
+class Celda {
+    - estado : EstadoCelda
+    + Celda(EstadoCelda)
+    + getEstado() : EstadoCelda
+    + setEstado(EstadoCelda) : void
+}
+
+class Jugador {
+    - vida : int
+    - ataque : int
+    - defensa : int
+    - capacidadmov : int
+    - inventario : int
+    - poshabitacion : int
+    + Jugador(int, int, int, int, int, int)
+    + getVida() : int
+    + setVida(int) : void
+    + getAtaque() : int
+    + setAtaque(int) : void
+    + getDefensa() : int
+    + setDefensa(int) : void
+    + getCapacidadmov() : int
+    + setCapacidadmov(int) : void
+    + getInventario() : int
+    + setInventario(int) : void
+    + getPoshabitacion() : int
+    + setPoshabitacion(int) : void
+}
+
+class Enemigo {
+    - movimiento : int
+    - vida : int
+    - ataque : int
+    - defensa : int
+    - poshabitacionene : int
+    + Enemigo(int, int, int, int, int)
+    + getMovimiento() : int
+    + setMovimiento(int) : void
+    + getVida() : int
+    + setVida(int) : void
+    + getAtaque() : int
+    + setAtaque(int) : void
+    + getDefensa() : int
+    + setDefensa(int) : void
+    + getPoshabitacionene() : int
+    + setPoshabitacionene(int) : void
+}
+
+class NodoGrafo {
+    + nombre : String
+    + vecinos : ListaNodoGrafo
+    + NodoGrafo(String)
+}
+
+class ElementoGrafo {
+    + nodo : NodoGrafo
+    + siguiente : ElementoGrafo
+    + ElementoGrafo(NodoGrafo)
+}
+
+class ListaNodoGrafo {
+    - primero : ElementoGrafo
+    + ListaNodoGrafo()
+    + addNodo(NodoGrafo) : void
+    + getPrimero() : ElementoGrafo
+    + contiene(NodoGrafo) : boolean
+}
+
+class ColaGrafo {
+    - primero : ElementoCola
+    - ultimo : ElementoCola
+    + ColaGrafo()
+    + encolar(NodoGrafo) : void
+    + desencolar() : NodoGrafo
+    + isEmpty() : boolean
+}
+
+class Grafo {
+    - nodos : ListaNodoGrafo
+    + Grafo()
+    + crearNodo(String) : NodoGrafo
+    + conectar(NodoGrafo, NodoGrafo) : void
+    + bfs(NodoGrafo) : void
+    + dfs(NodoGrafo) : void
+    + dfsConPila(NodoGrafo) : void
+    + caminoMasCorto(NodoGrafo, NodoGrafo) : void
+    + distanciaMinima(NodoGrafo, NodoGrafo) : int
+    + tieneCiclos() : boolean
+    + contarComponentes() : int
+    + estanConectados(NodoGrafo, NodoGrafo) : boolean
+    + conectarDirigido(NodoGrafo, NodoGrafo) : void
+    + buscar(String) : NodoGrafo
+    + mostrarVecinos(NodoGrafo) : void
+    + imprimirGrafo() : void
+}
+
+class ListaInventario {
+}
+
+class ElementoSE {
+}
+
+Celda --> EstadoCelda : estado
+
+NodoGrafo --> ListaNodoGrafo : vecinos
+ListaNodoGrafo --> ElementoGrafo : primero
+ElementoGrafo --> NodoGrafo : nodo
+ElementoGrafo --> ElementoGrafo : siguiente
+
+Grafo --> ListaNodoGrafo : nodos
+Grafo --> NodoGrafo : crea/usa
+
+ColaGrafo --> NodoGrafo : encola
+
+@enduml
