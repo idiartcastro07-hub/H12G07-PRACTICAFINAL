@@ -1,17 +1,13 @@
 package com.example.h12g07practicafinal;
 
 public class Celda {
-    private EstadoCelda estado;
+    private int fila, columna;
+    private Objeto objeto;
+    private Enemigo enemigo;
+    private boolean trampa;
 
-    public Celda (EstadoCelda estado) {
-        this.estado = estado;
-    }
-
-    public EstadoCelda getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoCelda estado) {
-        this.estado = estado;
-    }
+    public boolean isEmpty() {return objeto == null;}
+    public boolean hayObjeto() {return objeto != null;}
+    public boolean hayEnemigo() {return enemigo != null;}
+    public boolean hayTrampa() {return trampa;}
 }
