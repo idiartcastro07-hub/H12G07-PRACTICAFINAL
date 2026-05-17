@@ -4,8 +4,6 @@ public class ColaGrafo {
     private ElementoCola primero; //primer elemento de la cola
     private ElementoCola ultimo; //ultimo elemento de la cola
 
-
-
     //Nodo interno de la cola
     private class ElementoCola {
         NodoGrafo nodo;
